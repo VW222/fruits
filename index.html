@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <main
+        class="relative flex flex-col justify-center bg-center bg-fixed bg-[url(img/bg.jpg)] bg-cover bg-no-repeat h-screen -z-3 opacity-70">
+        <div class="absolute top-0 flex flex-col items-center border w-[100%] h-screen">
+            <h1 class="text-4xl">Déli gyümölcsök</h1>
+            <h2 class="text-2xl">Neked melyik a kedvenced?</h2>
+            <!-- <label for="fruit"></label> -->
+            <select name="" id="selectStuff" onchange="pick();" class="mb-5">
+                <!-- <option value=""></option> -->
+            </select>
+            <div class="w-[70vw] flex flex-col sm:flex-row md:flex-row lg:flex-row">
+                <img src="" alt="" class="" id="fruitImage">
+                <div id="textStuff" class="bg-white p-5">
+                    <h1 class="text-2xl" id="fruitName"></h1>
+                    <p class="" id="fruitDesc">
+                </div>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="data_fruits.js"></script>
+    <script>
+        const select = document.getElementById("selectStuff");
+
+        fruits.forEach(v => {
+            select.innerHTML += `<option value="${v.id}">${v.name}</option>`;
+        });
+
+        function doStuff(obj) {
+            document.getElementById("fruitImage").src = "img/" + obj.image;
+            document.getElementById("fruitDesc").innerText = obj.descr;
+            document.getElementById("fruitName").innerText = obj.name;
+        }
+
+        function pick() {
+            let obj = fruits.find(v => v.id == select.value);
+
+            doStuff(obj);
+        }
+
+        pick();
+    </script>
+</body>
+
+</html>
